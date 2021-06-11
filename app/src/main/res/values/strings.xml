@@ -12,7 +12,7 @@
     <string name="quote">This app is to provide reassurance to those that are in the middle of a law suit, as well as remind people
     that they need to be journaling daily</string>
     <string name="pain_journal_prompt">The more descriptive you can be, the better we can help.</string>
-    <string name="send_button">Send</string>
+    <string name="send_button">Submit</string>
     <string name="add_photo_button">Add Photo of Injury</string>
     <string name="spinner_prefix">My Case Type: </string>
     <string name="upload_button">Upload</string>
