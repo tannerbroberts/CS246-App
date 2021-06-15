@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             startActivity(callIntent);
         }catch (ActivityNotFoundException e){
-            Toast.makeText(MainActivity.this, "Your phone can't make this call.", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Your phone can't make this call.", Toast.LENGTH_SHORT).show();
         }
     }
 
