@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="submit"
     tools:context=".PainJournalActivity">
 
     <ImageView
@@ -11,6 +12,7 @@
         android:layout_width="133dp"
         android:layout_height="126dp"
         android:contentDescription="@string/levar_logo_description"
+        android:src="@drawable/square_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,25 +35,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/pain_journal_prompt"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2"
-        app:layout_constraintTop_toTopOf="@+id/scrollView2" />
+            <EditText
+                android:id="@+id/pain_journal_entry_text"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/pain_journal_prompt"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/button5"
@@ -61,15 +61,16 @@
         android:text="@string/add_photo_button"
         app:backgroundTint="#7E8083"
         app:cornerRadius="40dp"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/pain_journal_send_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/pain_journal_send_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="submit"
         android:text="@string/send_button"
         app:backgroundTint="#7E8083"
         app:cornerRadius="40dp"
