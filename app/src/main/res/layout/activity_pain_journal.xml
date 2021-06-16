@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:onClick="submit"
     tools:context=".PainJournalActivity">
 
@@ -59,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/add_photo_button"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#7E8083"
         app:cornerRadius="40dp"
         app:layout_constraintEnd_toStartOf="@+id/pain_journal_send_button"
@@ -72,6 +74,7 @@
         android:layout_height="wrap_content"
         android:onClick="submit"
         android:text="@string/send_button"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#7E8083"
         app:cornerRadius="40dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button5"
