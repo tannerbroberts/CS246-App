@@ -16,6 +16,18 @@ public class PainJournalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pain_journal);
 
         submit = findViewById(R.id.pain_journal_send_button);
+//        submit.setOnClickListener(v -> {
+//            String number = "4352330894";
+//            String sms = findViewById(R.id.pain_journal_entry_text).toString();
+//
+//            try {
+//                SmsManager smsManager = SmsManager.getDefault();
+//                smsManager.sendTextMessage(number, null, sms, null, null);
+//                Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
+//            } catch (Exception e) {
+//                Toast.makeText(this, "Failed to send!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     public void submit(View view) {
