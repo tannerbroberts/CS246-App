@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFFFF"
     tools:context=".Do_I_Need_A_Lawyer">
 
     <ScrollView
@@ -28,18 +29,20 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/do_i_need_a_lawyer_text" />
+                android:text="@string/do_i_need_a_lawyer_text"
+                android:textColor="#000000" />
         </LinearLayout>
     </ScrollView>
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="232dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="316dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="@string/free_case_review_button"
         android:src="@drawable/square_logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/square_logo" />
@@ -50,6 +53,7 @@
         android:layout_height="wrap_content"
         android:onClick="call"
         android:text="@string/free_case_review_button"
+        android:textColor="#FFFFFFFF"
         app:backgroundTint="#1A4164"
         app:cornerRadius="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

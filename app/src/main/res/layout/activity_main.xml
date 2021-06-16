@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    tools:actionBarNavMode="standard"
     tools:context=".MainActivity">
 
 
@@ -27,6 +28,7 @@
         android:layout_width="230dp"
         android:layout_height="72dp"
         android:layout_marginTop="24dp"
+        android:onClick="openLawyerAct"
         android:text="@string/do_i_need_a_lawyer_button"
         android:textColor="#FFFFFF"
         app:backgroundTint="#194165"

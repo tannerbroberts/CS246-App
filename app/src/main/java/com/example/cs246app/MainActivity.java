@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //takes away the title from the top of the page
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
@@ -46,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Your phone can't make this call.", Toast.LENGTH_SHORT).show();
         }
     }
-
+    public void openLawyerAct(View view){
+        Intent intent = new Intent(this, Do_I_Need_A_Lawyer.class);
+        startActivity(intent);
+    }
     // This is for granting SMS permissions
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
