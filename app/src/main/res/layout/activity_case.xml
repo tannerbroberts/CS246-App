@@ -11,6 +11,7 @@
         android:layout_width="230dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
+        android:onClick="openPainJournalActivity"
         android:text="@string/pain_journal_button"
         app:backgroundTint="#0E6698"
         app:cornerRadius="40dp"

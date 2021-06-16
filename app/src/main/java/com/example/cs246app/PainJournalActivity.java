@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -13,9 +14,16 @@ public class PainJournalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //takes away the title from the top of the page
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_pain_journal);
 
-        submit = findViewById(R.id.pain_journal_send_button);
+
+
+            submit = findViewById(R.id.pain_journal_send_button);
 //        submit.setOnClickListener(v -> {
 //            String number = "4352330894";
 //            String sms = findViewById(R.id.pain_journal_entry_text).toString();

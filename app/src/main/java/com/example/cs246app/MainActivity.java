@@ -51,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Do_I_Need_A_Lawyer.class);
         startActivity(intent);
     }
+
+
+    public void openCaseActivity(View view) {
+        Intent intent = new Intent(this, CaseActivity.class);
+        startActivity(intent);
+    }
+
+
+
     // This is for granting SMS permissions
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
