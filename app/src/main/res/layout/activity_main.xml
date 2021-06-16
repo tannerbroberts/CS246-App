@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:actionBarNavMode="standard"
     tools:context=".MainActivity">
+
 
     <Button
         android:id="@+id/callButton"
@@ -13,6 +16,7 @@
         android:layout_marginTop="24dp"
         android:onClick="call"
         android:text="@string/call_alan_button"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#7E8083"
         app:cornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +28,9 @@
         android:layout_width="230dp"
         android:layout_height="72dp"
         android:layout_marginTop="24dp"
+        android:onClick="openLawyerAct"
         android:text="@string/do_i_need_a_lawyer_button"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#194165"
         app:cornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +44,7 @@
         android:layout_height="72dp"
         android:layout_marginTop="24dp"
         android:text="@string/my_case_button"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#0E6698"
         app:cornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +61,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:contentDescription="@string/levar_logo_description"
+        android:src="@drawable/square_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -65,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/copyright_text"
+        android:textColor="#070707"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
