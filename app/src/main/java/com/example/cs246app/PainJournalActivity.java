@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class PainJournalActivity extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class PainJournalActivity extends AppCompatActivity {
         submit = findViewById(R.id.pain_journal_send_button);
 //        submit.setOnClickListener(v -> {
 //            String number = "4352330894";
-//            String sms = findViewById(R.id.pain_journal_entry_text).toString();
+//            String sms = ((EditText)findViewById(R.id.pain_journal_entry_text)).getText().toString();
 //
 //            try {
 //                SmsManager smsManager = SmsManager.getDefault();
@@ -32,7 +33,7 @@ public class PainJournalActivity extends AppCompatActivity {
 
     public void submit(View view) {
         String number = "4352330894";
-        String sms = findViewById(R.id.pain_journal_entry_text).toString();
+        String sms = ((EditText)findViewById(R.id.pain_journal_entry_text)).getText().toString();
 
         // TODO: 6/14/21 I still need to be able to add photos, so there's more to add to this function
 
