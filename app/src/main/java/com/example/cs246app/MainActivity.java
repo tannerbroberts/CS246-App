@@ -7,7 +7,9 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,7 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openCaseActivity(View view) {
-        Intent intent = new Intent(this, CaseActivity.class);
+
+        SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
+        Boolean isCaseActive = data.getBoolean("isCaseActive", false);
+        Intent intent;
+        if (isCaseActive) {
+            intent = new Intent(this, CaseActivity.class);
+        }else{
+            intent = new Intent(this, StartCase.class);
+        }
         startActivity(intent);
     }
 

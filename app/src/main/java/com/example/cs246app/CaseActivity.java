@@ -24,6 +24,8 @@ public class CaseActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PainJournalActivity.class);
         startActivity(intent);
     }
+
+
 }
 
 
