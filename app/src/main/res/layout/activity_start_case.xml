@@ -35,7 +35,7 @@
         android:paddingLeft="5px"
         android:paddingTop="5px"
         android:paddingRight="5px"
-        android:text="Welcome. We are glad you are here and that you have chosen us to         represent you. This app allows you to help us win your case. The information you provide here         makes a difference. Let's work together and get you the compensation your deserve."
+        android:text="Welcome. We are glad you are here and that you have chosen us to         represent you. This app allows you to help us win your case. The information you provide here makes a difference. Let's work together and get you the compensation your deserve."
         android:textColor="#FC000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
@@ -114,7 +114,7 @@
         android:textColor="#FC000000"
         android:textColorHint="#FC000000"
         app:layout_constraintEnd_toStartOf="@+id/day"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastName" />
 
@@ -147,7 +147,7 @@
         android:textColorHint="#FC000000"
         app:layout_constraintBaseline_toBaselineOf="@+id/month"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
