@@ -11,6 +11,7 @@ import android.view.Window;
 
 public class CaseActivity extends AppCompatActivity {
     View endCaseButton;
+    Boolean wasEndCaseButtonClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,14 +21,16 @@ public class CaseActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_case);
+    }
 
-        endCaseButton = findViewById(R.id.endCase);
-        endCaseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                endCase();
-            }
-        });
+    @Override
+    public void onResume(){
+        super.onResume();
+        SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
+        Boolean checkActivity = data.getBoolean("isCaseActive", false);
+        if(!checkActivity){
+            this.finish();
+        }
     }
 
     public void openPainJournalActivity(View view) {
@@ -35,13 +38,15 @@ public class CaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void endCase(){
-        SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = data.edit();
-        editor.putBoolean("isCaseActive", false);
-        editor.apply();
-        this.finish();
+    public void endCase(View view){
+
+        Intent intent = new Intent(this, EndCaseActivity.class);
+        startActivity(intent);
+
+        wasEndCaseButtonClicked = true;
     }
+
+
 
 
 

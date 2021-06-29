@@ -5,14 +5,14 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CS246App">
-        <activity android:name=".StartCase"></activity>
+        <activity android:name=".EndCaseActivity"></activity>
+        <activity android:name=".StartCase" />
         <activity android:name=".RequestedPhotosActivity" />
         <activity android:name=".PainJournalActivity" />
         <activity android:name=".CaseActivity" />
