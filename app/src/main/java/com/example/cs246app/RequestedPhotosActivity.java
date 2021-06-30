@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -68,21 +69,19 @@ public class RequestedPhotosActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void submit(View view) {
         if (clip == null) {
             Toast.makeText(this, "No Photos", Toast.LENGTH_SHORT).show();
             return;
         } else {
 
-            Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-            intent.setType("image/png");
-            ArrayList<Uri> uris = new ArrayList<>();
             for (int i = 0; i < clip.getItemCount(); i++) {
-                uris.add(clip.getItemAt(i).getUri());
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendMultimediaMessage(this, clip.getItemAt(i).getUri(), "4352330894", null, null);
             }
-            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 
-            startActivity(intent);
+
         }
     }
 }
