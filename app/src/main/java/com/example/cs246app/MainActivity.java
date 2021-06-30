@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void call(View view){
+    public void callAllen(View view){
         Uri number = Uri.parse("tel:(870)2467070");
         Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
 

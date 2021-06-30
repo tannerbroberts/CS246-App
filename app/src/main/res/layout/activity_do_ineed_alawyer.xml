@@ -51,7 +51,7 @@
         android:id="@+id/callForReview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="call"
+        android:onClick="callAllen"
         android:text="@string/free_case_review_button"
         android:textColor="#FFFFFFFF"
         app:backgroundTint="#1A4164"

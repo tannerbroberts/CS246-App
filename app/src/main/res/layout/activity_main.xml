@@ -14,7 +14,7 @@
         android:layout_width="230dp"
         android:layout_height="72dp"
         android:layout_marginTop="24dp"
-        android:onClick="call"
+        android:onClick="callAllen"
         android:text="@string/call_alan_button"
         android:textColor="#FFFFFF"
         app:backgroundTint="#7E8083"
