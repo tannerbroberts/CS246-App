@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // addNotification();
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "Notification" );
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "Notification" )
                         builder.setSmallIcon(R.drawable.ic_launcher_background);
                         builder.setContentTitle("Pain Journal reminder");
                         builder.setContentText("Pain Journal entry needed");
