@@ -65,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // addNotification();
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "Notification" )
-                        .setSmallIcon(R.drawable.ic_launcher_background)
-                        .setContentTitle("Pain Journal reminder")
-                        .setContentText("Pain Journal entry needed")
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        // .setContentIntent(pendingIntent)
-                        .setAutoCancel(true);
+                        builder.setSmallIcon(R.drawable.ic_launcher_background);
+                        builder.setContentTitle("Pain Journal reminder");
+                        builder.setContentText("Pain Journal entry needed");
+                        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//                        builder.setContentIntent(pendingIntent);
+                        builder.setAutoCancel(true);;
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(MainActivity.this);
                 managerCompat.notify(0, builder.build());
