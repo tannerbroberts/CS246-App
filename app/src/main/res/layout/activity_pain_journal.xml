@@ -57,10 +57,11 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/pain_journal_add_photo_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:onClick="addPhotoOfInjury"
         android:text="@string/add_photo_button"
         android:textColor="#FFFFFF"
         app:backgroundTint="#7E8083"
@@ -79,8 +80,8 @@
         android:textColor="#FFFFFF"
         app:backgroundTint="#7E8083"
         app:cornerRadius="40dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button5"
+        app:layout_constraintBaseline_toBaselineOf="@+id/pain_journal_add_photo_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button5" />
+        app:layout_constraintStart_toEndOf="@+id/pain_journal_add_photo_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

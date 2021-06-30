@@ -38,6 +38,11 @@ public class CaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void openRequestedPhotosActivity(View view) {
+        Intent intent = new Intent(this, RequestedPhotosActivity.class);
+        startActivity(intent);
+    }
+
     public void endCase(View view){
 
         Intent intent = new Intent(this, EndCaseActivity.class);
@@ -45,12 +50,4 @@ public class CaseActivity extends AppCompatActivity {
 
         wasEndCaseButtonClicked = true;
     }
-
-
-
-
-
 }
-
-
-
