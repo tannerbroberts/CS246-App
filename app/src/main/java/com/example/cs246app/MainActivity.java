@@ -3,21 +3,28 @@ package com.example.cs246app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +44,66 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.SEND_SMS}, 1);
         }
+        Button createNotificationButton = findViewById(R.id.button_notification);
+
+            // private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // CharSequence name = getString(R.string.channel_name);
+            // String description = getString(R.string.channel_discription);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("Notification", "Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            // channel.setDescription(description);
+            // NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            // NotificationManager.createNotificationChannel(channel);
+
+            // NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+            // managerCompat.notify(0, builder.build());
+        }
+
+        createNotificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // addNotification();
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "Notification" )
+                        .setSmallIcon(R.drawable.ic_launcher_background)
+                        .setContentTitle("Pain Journal reminder")
+                        .setContentText("Pain Journal entry needed")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        // .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(MainActivity.this);
+                managerCompat.notify(0, builder.build());
+
+
+            }
+        });
     }
+
+    /* private void addNotification() {
+        // Builds Notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "Notification" )
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Pain Journal reminder")
+                .setContentText("Pain Journal entry needed")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+
+
+        // Creates intent needed to show the notification
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
+    } */
+
+
+
 
     public void call(View view){
         Uri number = Uri.parse("tel:(870)2467070");
