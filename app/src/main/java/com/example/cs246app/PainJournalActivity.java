@@ -3,9 +3,11 @@ package com.example.cs246app;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Session2Command;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.telephony.SmsManager;
@@ -19,6 +21,7 @@ import javax.xml.transform.Result;
 
 public class PainJournalActivity extends AppCompatActivity {
     public static final int CAMERA_ACTION_CODE = 11;
+    ClipData clip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +79,6 @@ public class PainJournalActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_ACTION_CODE && resultCode == RESULT_OK && data != null) {
-            Bundle bundle = data.getExtras();
-            Bitmap photo = (Bitmap) bundle.get("data");
         } else {
             Toast.makeText(this, "The image didn't save", Toast.LENGTH_SHORT).show();
         }

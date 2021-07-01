@@ -69,20 +69,21 @@ public class RequestedPhotosActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void submit(View view) {
         if (clip == null) {
             Toast.makeText(this, "No Photos", Toast.LENGTH_SHORT).show();
             return;
         } else {
 
+            Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+            intent.setType("image/png");
+            ArrayList<Uri> uris = new ArrayList<>();
             for (int i = 0; i < clip.getItemCount(); i++) {
-                System.out.println("is this working maine?");;
-                SmsManager manager = SmsManager.getDefault();
-                manager.sendMultimediaMessage(this, clip.getItemAt(i).getUri(), "4352330894", null, null);
+                uris.add(clip.getItemAt(i).getUri());
             }
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
 
-
+            startActivity(intent);
         }
     }
 }
