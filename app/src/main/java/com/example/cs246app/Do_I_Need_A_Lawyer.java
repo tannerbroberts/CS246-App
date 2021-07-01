@@ -35,4 +35,8 @@ public class Do_I_Need_A_Lawyer extends AppCompatActivity {
             Toast.makeText(Do_I_Need_A_Lawyer.this, "Your phone can't make this call.", Toast.LENGTH_SHORT).show();
         }
     }
+    public void goToRefer(View view){
+        Intent intent = new Intent(this, ReferAFriend.class);
+        startActivity(intent);
+    }
 }

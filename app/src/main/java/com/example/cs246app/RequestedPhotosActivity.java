@@ -77,6 +77,7 @@ public class RequestedPhotosActivity extends AppCompatActivity {
         } else {
 
             for (int i = 0; i < clip.getItemCount(); i++) {
+                System.out.println("is this working maine?");;
                 SmsManager manager = SmsManager.getDefault();
                 manager.sendMultimediaMessage(this, clip.getItemAt(i).getUri(), "4352330894", null, null);
             }

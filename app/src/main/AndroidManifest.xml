@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CS246App">
-        <activity android:name=".EndCaseActivity"></activity>
+        <activity android:name=".ReferAFriend"></activity>
+        <activity android:name=".EndCaseActivity" />
         <activity android:name=".StartCase" />
         <activity android:name=".RequestedPhotosActivity" />
         <activity android:name=".PainJournalActivity" />
