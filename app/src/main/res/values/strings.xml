@@ -31,5 +31,7 @@ If you or a loved one are an Arkansas, resident, and were hurt in an accident ca
     <string name="upload_button">Upload</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_a_photo">Text a Photo to Alan</string>
+    <string name="requested_photos_sent_photos_label">Below are the photos you have already included:</string>
 
 </resources>

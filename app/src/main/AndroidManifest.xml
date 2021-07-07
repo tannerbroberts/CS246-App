@@ -11,17 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CS246App">
-        <activity android:name=".ReferAFriend"></activity>
+        <activity android:name=".ReferAFriend"/>
         <activity android:name=".EndCaseActivity" />
         <activity android:name=".StartCase" />
-        <activity android:name=".RequestedPhotosActivity" />
+        <activity android:name=".RequestedPhotosActivity"/>
         <activity android:name=".PainJournalActivity" />
         <activity android:name=".CaseActivity" />
         <activity android:name=".Do_I_Need_A_Lawyer" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
