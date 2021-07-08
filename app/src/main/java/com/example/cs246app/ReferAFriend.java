@@ -83,7 +83,7 @@ public class ReferAFriend extends AppCompatActivity {
         }
     }
 
-    public void referFriend(View v){
+    public void referFriend(View v) {
         EditText firstName = findViewById(R.id.referralFirstName);
         EditText lastName = findViewById(R.id.referralLastName);
         referralFirstName = firstName.getText().toString();
@@ -92,8 +92,7 @@ public class ReferAFriend extends AppCompatActivity {
             Toast.makeText(this, "Please enter your friend's full name", Toast.LENGTH_SHORT).show();
         }else{
             String number = "4352330894";
-            String sms = "Hey " + referralFirstName+ " here is the name, number, and website of the personal injury attorney I've been using " +
-                    " I thing they can help you out too. The Law Offices of Alan LeVar: (870)246-7070, https://www.levarlaw.com/";
+            String sms = "Hey " + referralFirstName+ " Here's that info: (870)246-7070, https://www.levarlaw.com/";
 
             try {
                 SmsManager smsManager = SmsManager.getDefault();
