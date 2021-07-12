@@ -8,7 +8,6 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -29,52 +28,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    // private NotificationManagerCompat notificationManager;
-    private static final String CHANNEL_ID = "base notification";
-    private static final String CHANNEL_NAME = "Base Notification";
-    private static final String CHANNEL_DESCRIPTION = "Base Notification Journal";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
-            channel.setDescription(CHANNEL_DESCRIPTION);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-        }
-
-
-
-    findViewById(R.id.button_notification).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            displayNotification();
-
-        }
-    });
-
-    }
-
-    private void displayNotification() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_done)
-                .setContentTitle("Reminder")
-                .setContentText("Pain Journal Entry")
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1, builder.build());
-
-
-        // notificationManager = NotificationManagerCompat.from(this);
-
-
         //takes away the title from the top of the page
-       /* requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
@@ -98,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
             // NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
             // managerCompat.notify(0, builder.build());
-        }*/
+        }
 
-       /* createNotificationButton.setOnClickListener(new View.OnClickListener() {
+        createNotificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // addNotification();
@@ -117,31 +77,18 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-        });*/
+        });
     }
-
-    /*public void sendOnPain(View view) {
-        Notification notification = new NotificationCompat.Builder(this, BaseApp.CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.ic_done)
-                .setContentTitle("Reminder")
-                .setContentText("Pain Journal entry needed")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
-
-        notificationManager.notify(1, notification);
-
-    }*/
 
     /* private void addNotification() {
         // Builds Notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                builder.setSmallIcon(R.drawable.notification_icon);
-                builder.setContentTitle("Pain Journal reminder");
-                builder.setContentText("Pain Journal entry needed");
-                builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-                builder.setContentIntent(PendingIntent);
-                builder.setAutoCancel(true);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "Notification" )
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Pain Journal reminder")
+                .setContentText("Pain Journal entry needed")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
 
 
 
