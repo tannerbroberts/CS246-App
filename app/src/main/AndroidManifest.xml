@@ -25,5 +25,10 @@
             </intent-filter>
         </activity>
     </application>
+    <receiver
+        android:name=".NotificationReceiver"
+        android:enabled="true"
+        android:exproted="false" >
+    </receiver>
 
 </manifest>
