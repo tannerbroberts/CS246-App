@@ -39,7 +39,11 @@ public class PainJournalActivity extends AppCompatActivity {
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(number, null, sms, null, null);
+            while (sms.length() > 160) {
+                String sendNow = sms.substring(0, 160);
+                smsManager.sendTextMessage(number, null, sendNow, null, null);
+                sms = sms.substring(160);
+            }
             Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
         } catch (android.content.ActivityNotFoundException e) {
             Toast.makeText(this, "Failed to send!", Toast.LENGTH_SHORT).show();
