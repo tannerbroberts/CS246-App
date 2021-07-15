@@ -8,6 +8,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         createNotificationChannel();
-        Intent notificationIntent = new Intent();
+        Intent notificationIntent = new Intent(this, PainJournalActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         // Builds Notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "painJournal" )
@@ -69,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
-
-
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this,
@@ -78,9 +77,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
-
 
     public void callAllen(View view){
         Uri number = Uri.parse("tel:(870)2467070");
@@ -92,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Your phone can't make this call.", Toast.LENGTH_SHORT).show();
         }
     }
+
     public void openLawyerAct(View view){
         Intent intent = new Intent(this, Do_I_Need_A_Lawyer.class);
         startActivity(intent);

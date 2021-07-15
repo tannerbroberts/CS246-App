@@ -15,4 +15,3 @@ public class MyReceiver extends BroadcastReceiver {
             context.startService(intent1);
         }
     }
-
