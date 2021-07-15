@@ -49,6 +49,7 @@ public class PainJournalActivity extends AppCompatActivity {
                 } while (sms.length() > 160);
             }
             Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
+            ((EditText)findViewById(R.id.pain_journal_entry_text)).setText("");
         } catch (android.content.ActivityNotFoundException e) {
             Toast.makeText(this, "Failed to send!", Toast.LENGTH_SHORT).show();
         }
