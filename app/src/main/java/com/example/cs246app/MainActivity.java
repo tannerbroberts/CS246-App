@@ -1,16 +1,13 @@
 package com.example.cs246app;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -20,50 +17,19 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Channel Name";
-            String description = "Channel Description";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("painJournal", name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-    }
+import java.util.Calendar;
 
+public class MainActivity extends AppCompatActivity {
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        createNotificationChannel();
-        Intent notificationIntent = new Intent(this, PainJournalActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        // Builds Notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "painJournal" )
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle("Pain Journal Reminder")
-                .setContentText("Don't forget to record and submit your pain journal entry.")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                //.setContentIntent(contentIntent)
-                .setAutoCancel(true);
-        builder.setContentIntent(contentIntent);
-        // Add as notification
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
 
         //takes away the title from the top of the page
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -75,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.SEND_SMS}, 1);
         }
+        Intent setReminder = new Intent(this, MyReceiver.class);
+        PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, setReminder, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        cal.set(Calendar.HOUR_OF_DAY, 6);
+        cal.set(Calendar.MINUTE, 52);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
 
     }
 
@@ -94,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void openCaseActivity(View view) {
 
         SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
@@ -107,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
         }
         startActivity(intent);
     }
-
-
 
     // This is for granting SMS permissions
     @Override
