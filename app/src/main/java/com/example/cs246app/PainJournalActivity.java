@@ -43,21 +43,24 @@ public class PainJournalActivity extends AppCompatActivity {
 
         String number = "5017370864";
         //String sms = data.getString("firstName", "someone")+ " " + data.getString("lastName", "") + "'s Pain Journal";
-        String sms = ((EditText)findViewById(R.id.pain_journal_entry_text)).getText().toString();
+        String smsInput = ((EditText)findViewById(R.id.pain_journal_entry_text)).getText().toString();
+        String sms = "My pain: " + smsInput;
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            if (sms.length() < 159) {
+            if (sms.equals("My pain: ")) {
+                return;
+            } else if (sms.length() < 160) {
                 smsManager.sendTextMessage(number, null, sms, null, null);
             } else {
                 ArrayList <String> parts = new ArrayList<>();
                 do {
 
-                    if(sms.length() > 159){
-                        String sendNow = sms.substring(0, 159);
+                    if(sms.length() > 160){
+                        String sendNow = sms.substring(0, 160);
                         parts.add(sendNow);
 
-                        sms = sms.substring(159);
+                        sms = sms.substring(160);
 
                     }else{
                         parts.add(sms);
@@ -67,15 +70,9 @@ public class PainJournalActivity extends AppCompatActivity {
 
 
                 } while (true);
-                for (String part: parts
-                     ) {
-                    //smsManager.sendTextMessage(number, null, part, null, null);
-                    System.out.println("*********************" + part + "********************* \n \n \n \n");
+                for (int i = 0; i < parts.size(); i++) {
+                    smsManager.sendTextMessage(number, null, parts.get(i), null, null);
                 }
-                //smsManager.sendMultipartTextMessage(number, null, parts, null, null);
-
-
-                //smsManager.sendTextMessage(number, null, parts.get(0), null, null);
             }
 
             Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
