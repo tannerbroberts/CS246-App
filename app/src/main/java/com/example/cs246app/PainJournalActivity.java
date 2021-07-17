@@ -66,7 +66,7 @@ public class PainJournalActivity extends AppCompatActivity {
 
 
 
-                } while (sms.length() > 0);
+                } while (true);
                 for (String part: parts
                      ) {
                     //smsManager.sendTextMessage(number, null, part, null, null);
