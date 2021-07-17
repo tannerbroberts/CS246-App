@@ -11,14 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CS246App">
-        <activity android:name=".ReferAFriend"/>
-        <activity android:name=".EndCaseActivity" />
-        <activity android:name=".StartCase" />
-        <activity android:name=".RequestedPhotosActivity"/>
-        <activity android:name=".PainJournalActivity" />
-        <activity android:name=".CaseActivity" />
-        <activity android:name=".Do_I_Need_A_Lawyer" />
-        <activity android:name=".MainActivity">
+
+
+
+        <activity android:name=".ReferAFriend"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EndCaseActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".StartCase"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RequestedPhotosActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PainJournalActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CaseActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Do_I_Need_A_Lawyer"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

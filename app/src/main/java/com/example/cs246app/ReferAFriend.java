@@ -110,6 +110,7 @@ public class ReferAFriend extends AppCompatActivity {
                 smsManager.sendTextMessage(referralPhoneNum, null, messageToFriend, null, null);
                 smsManager.sendTextMessage(leadDocketNumber, null, messageToLeadDocket, null, null);
                 Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
+                this.finish();
             } catch (android.content.ActivityNotFoundException e) {
                 Toast.makeText(this, "Failed to send!", Toast.LENGTH_SHORT).show();
             }
