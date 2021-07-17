@@ -3,7 +3,9 @@ package com.example.cs246app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +27,10 @@ public class ReferAFriend extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //takes away the title from the top of the page
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
 
         pickContact();
 
@@ -91,12 +98,17 @@ public class ReferAFriend extends AppCompatActivity {
         if(referralFirstName.length() < 1 || referralLastName.length() < 1){
             Toast.makeText(this, "Please enter your friend's full name", Toast.LENGTH_SHORT).show();
         }else{
-            String number = "4352330894";
-            String sms = "Hey " + referralFirstName+ " Here's that info: (870)246-7070, https://www.levarlaw.com/";
+            SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
+            String leadDocketNumber = "5017370864";
+            String messageToLeadDocket = data.getString("firstName", "someone")+ " " + data.getString("lastName", "") + " referred their friend "
+                    + referralFirstName + " " + referralLastName + " - " + referralPhoneNum;
+            String messageToFriend = "Hey " + referralFirstName+ " here's the info for a good Personal Injury Attorney: (870)246-7070, https://www.levarlaw.com/";
 
             try {
+
                 SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(number, null, sms, null, null);
+                smsManager.sendTextMessage(referralPhoneNum, null, messageToFriend, null, null);
+                smsManager.sendTextMessage(leadDocketNumber, null, messageToLeadDocket, null, null);
                 Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
             } catch (android.content.ActivityNotFoundException e) {
                 Toast.makeText(this, "Failed to send!", Toast.LENGTH_SHORT).show();

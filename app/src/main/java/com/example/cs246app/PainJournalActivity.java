@@ -4,7 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.Session2Command;
 import android.net.Uri;
@@ -16,6 +18,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.transform.Result;
 
@@ -34,20 +39,45 @@ public class PainJournalActivity extends AppCompatActivity {
     }
 
     public void submit(View view) {
-        String number = "4352330894";
+        //SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
+
+        String number = "5017370864";
+        //String sms = data.getString("firstName", "someone")+ " " + data.getString("lastName", "") + "'s Pain Journal";
         String sms = ((EditText)findViewById(R.id.pain_journal_entry_text)).getText().toString();
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            if (sms.length() > 160) {
+            if (sms.length() < 159) {
                 smsManager.sendTextMessage(number, null, sms, null, null);
             } else {
+                ArrayList <String> parts = new ArrayList<>();
                 do {
-                    String sendNow = sms.substring(0, 160);
-                    smsManager.sendTextMessage(number, null, sendNow, null, null);
-                    sms = sms.substring(160);
-                } while (sms.length() > 160);
+
+                    if(sms.length() > 159){
+                        String sendNow = sms.substring(0, 159);
+                        parts.add(sendNow);
+
+                        sms = sms.substring(159);
+
+                    }else{
+                        parts.add(sms);
+                        break;
+                    }
+
+
+
+                } while (sms.length() > 0);
+                for (String part: parts
+                     ) {
+                    //smsManager.sendTextMessage(number, null, part, null, null);
+                    System.out.println("*********************" + part + "********************* \n \n \n \n");
+                }
+                //smsManager.sendMultipartTextMessage(number, null, parts, null, null);
+
+
+                //smsManager.sendTextMessage(number, null, parts.get(0), null, null);
             }
+
             Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
             ((EditText)findViewById(R.id.pain_journal_entry_text)).setText("");
         } catch (android.content.ActivityNotFoundException e) {
@@ -57,7 +87,7 @@ public class PainJournalActivity extends AppCompatActivity {
 
     public void addPhotoOfInjury(View view) {
         Intent attachPhotoInDefaultSmsApp = new Intent(Intent.ACTION_VIEW);
-        attachPhotoInDefaultSmsApp.putExtra("address", "4352330894");
+        attachPhotoInDefaultSmsApp.putExtra("address", "5017370864");
         attachPhotoInDefaultSmsApp.putExtra("sms_body", "This is to document my pain.");
         attachPhotoInDefaultSmsApp.setType("vnd.android-dir/mms-sms");
         try {

@@ -39,7 +39,7 @@ public class RequestedPhotosActivity extends AppCompatActivity {
 
     public void submit(View view) {
         Intent attachPhotoInDefaultSmsApp = new Intent(Intent.ACTION_VIEW);
-        attachPhotoInDefaultSmsApp.putExtra("address", "4352330894");
+        attachPhotoInDefaultSmsApp.putExtra("address", "5017370864");
         attachPhotoInDefaultSmsApp.putExtra("sms_body", "A photo provided at your request");
         attachPhotoInDefaultSmsApp.setType("vnd.android-dir/mms-sms");
         try {
