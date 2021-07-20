@@ -44,35 +44,40 @@ public class PainJournalActivity extends AppCompatActivity {
         String number = "5017370864";
         //String sms = data.getString("firstName", "someone")+ " " + data.getString("lastName", "") + "'s Pain Journal";
         String smsInput = ((EditText)findViewById(R.id.pain_journal_entry_text)).getText().toString();
-        String sms = "My pain: " + smsInput;
+        String sms = "My pain:\n" + smsInput;
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            if (sms.equals("My pain: ")) {
+            if (sms.equals("My pain:\n")) {
                 return;
             } else if (sms.length() < 160) {
                 smsManager.sendTextMessage(number, null, sms, null, null);
             } else {
-                ArrayList <String> parts = new ArrayList<>();
-                do {
-
-                    if(sms.length() > 160){
-                        String sendNow = sms.substring(0, 160);
-                        parts.add(sendNow);
-
-                        sms = sms.substring(160);
-
-                    }else{
-                        parts.add(sms);
-                        break;
-                    }
-
-
-
-                } while (true);
-                for (int i = 0; i < parts.size(); i++) {
-                    smsManager.sendTextMessage(number, null, parts.get(i), null, null);
-                }
+                // The following is run on a background thread
+//                ArrayList <String> parts = new ArrayList<>();
+//                do {
+//
+//                    if(sms.length() > 160){
+//                        String sendNow = sms.substring(0, 160);
+//                        parts.add(sendNow);
+//
+//                        sms = sms.substring(160);
+//
+//                    }else{
+//                        parts.add(sms);
+//                        break;
+//                    }
+//
+//                } while (true);
+//                for (int i = 0; i < parts.size(); i++) {
+//                    smsManager.sendTextMessage(number, null, parts.get(i), null, null);
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch(InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+                new Thread(new SendPainJournalMessages(smsManager, number, sms)).start();
             }
 
             Toast.makeText(this, "Sent!", Toast.LENGTH_SHORT).show();
