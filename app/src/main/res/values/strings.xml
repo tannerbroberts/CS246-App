@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CS246 App</string>
+    <string name="app_name">Alan LeVar Law</string>
     <string name="call_alan_button">Call Alan</string>
     <string name="do_i_need_a_lawyer_button">Do I Need A Lawyer?</string>
     <string name="my_case_button">My Case</string>

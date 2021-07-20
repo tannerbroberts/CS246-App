@@ -43,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
         }
         Intent setReminder = new Intent(this, MyReceiver.class);
         PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, setReminder, PendingIntent.FLAG_UPDATE_CURRENT);
-
+        SharedPreferences preferences = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
         String NEED_TO_SET_ALARM = "the_recurring_alarm_has_been_set_for_the_pain_journal_reminder";
-        if (getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE).getBoolean(NEED_TO_SET_ALARM, true)) {
+
+        if (preferences.getBoolean(NEED_TO_SET_ALARM, true)) {
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(System.currentTimeMillis());
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             cal.set(Calendar.MINUTE, 30);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 86_400_000, broadcast);
 
-            SharedPreferences preferences = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
+
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean(NEED_TO_SET_ALARM, false);
             editor.apply();

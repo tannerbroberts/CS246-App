@@ -39,12 +39,12 @@ public class PainJournalActivity extends AppCompatActivity {
     }
 
     public void submit(View view) {
-        //SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
+        SharedPreferences data = getSharedPreferences("com.example.cs246app.data", Context.MODE_PRIVATE);
 
         String number = "5017370864";
-        //String sms = data.getString("firstName", "someone")+ " " + data.getString("lastName", "") + "'s Pain Journal";
+        String sms = data.getString("firstName", "someone")+ " " + data.getString("lastName", "") + "'s Pain Journal";
         String smsInput = ((EditText)findViewById(R.id.pain_journal_entry_text)).getText().toString();
-        String sms = "My pain:\n" + smsInput;
+        sms += ":\n" + smsInput;
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
